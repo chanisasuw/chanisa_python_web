@@ -16,7 +16,7 @@ class HomePage(Browser):
         self.driver.find_element(*locator).send_keys(text)
 
     def click_element(self, *locator):
-        self.driver.find_element(*locator).click()
+        self.driver.find_element_by_xpath(*locator).click()
 
     def navigate(self, address):
         self.driver.get(address)
@@ -24,9 +24,11 @@ class HomePage(Browser):
     def get_page_title(self):
         return self.driver.title
 
-    def menu(self. menu_name):
-        self.driver.find_element(*locator)
+    def searchfrom(self, *locator):
+        self.driver.find_element_by_id(*locator)
         
     def search(self, search_term):
         self.fill(search_term, *HomePageLocator.SEARCH_FIELD)
         self.click_element(*HomePageLocator.SUBMIT_BUTTON)
+
+

@@ -1,19 +1,32 @@
 from nose.tools import assert_equal, assert_true
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import sys
 
-@step('I open TrueID Home Page')
+@step('It should be "{text_name}" field')
+def step_impl(context, text_name):
+	context.search_page.verify_text("//*[text()='" + text_name + "']")
+
+@step('Finding "{element}" Flights leave field')
+def step_impl(context, element):
+	context.search_page.get_element_by_xpath("//*[@id='"+ element +"']")
+
+@step('Select "{transfer}" : "{state}"')
+def step_impl(context, transfer, state):
+	context.search_page.click_element("//select[@id='" + transfer +"']")
+	context.search_page.click_element("//select[@id='" + transfer +"']/option[text()='"+ state +"']")
+
+@step('"{transfer}" found flight leave on "{state}"')
+def step_impl(context, transfer ,state):
+	context.search_page.get_element_by_xpath("//*[@id='" + transfer +"']/option[text()='"+ state +"']")
+
+@step('Search flight without promo code')
 def step_impl(context):
-    context.home_page.navigate("https://home.trueid.net")
-    assert_equal(context.home_page.get_page_title(), "TrueID ทรูไอดี ที่เดียวครบสุด.. ทุกความสนุกและสิทธิพิเศษ ดูหนังออนไลน์ ดูช่องทีวีดิจิตอลฟรี")
+	context.search_page.click_element("//input[@type='submit']")
+	assert_equal(context.home_page.get_page_title(), "Mars Airlines: Search Results")
 
-@step('I verify main menu that existing "{menu_name}"')
-def step_impl(context, menu_name):
-    context.home_page.menu(menu_name)
+@step('User found message "{element}"')
+def step_impl(context, element):
+	context.search_page.find_search_result("//*[@id='content']/p[1]")
+	context.search_page.verify_text("//*[text()='" + element + "']")
 
-@step('I am taken to the PyPi Search Results page')
-def step_impl(context):
-    assert_equal(context.search_results_page.get_page_title(), "Index of Packages Matching 'behave' : Python Package Index")
-
-@step('I see a search result "{search_result}"')
-def step_impl(context, search_result):
-    assert_true(context.search_results_page.find_search_result(search_result))
