@@ -3,8 +3,8 @@ Feature: #1 - Basic Serach Flow
   Scenario: There should be ‘departure’ and ‘return’ fields on a search form.
     Given User open Mars Airlines Home Page
     When User verify search flight box that existing
-    Then It should be "Departing" field
-    And It should be "Returning" field
+    Then It should be "departure" field
+    And It should be "return" field
 
   Scenario Outline: Flights leave every six months, in July and December, both ways.
   	Given User open Mars Airlines Home Page
