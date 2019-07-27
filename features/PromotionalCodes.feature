@@ -1,4 +1,4 @@
-Feature: #3 – Invalid Return Dates
+Feature: #2 – Invalid Return Dates
 
   Scenario: When a valid code is entered, the search result should have a “Promotional code [code] used: [discount]% discount!” message.
 	  Given User open Mars Airlines Home Page

@@ -1,4 +1,4 @@
-Feature: Link to Home Page
+Feature: #3 - Link to Home Page
 
   Scenario: “Book a ticket to the red planet now!” should apperar somewhere prominent on the page.
     Given User open Mars Airlines Home Page
