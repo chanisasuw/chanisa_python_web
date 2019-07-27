@@ -1,5 +1,6 @@
 from nose.tools import assert_equal, assert_true
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 ## Story 3
 @step('User open Mars Airlines Home Page')

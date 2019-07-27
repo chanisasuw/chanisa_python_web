@@ -12,9 +12,6 @@ class HomePageLocator(object):
 class HomePage(Browser):
     # Home Page Actions
 
-    def fill(self, text, *locator):
-        self.driver.find_element(*locator).send_keys(text)
-
     def click_element(self, *locator):
         self.driver.find_element_by_xpath(*locator).click()
 
